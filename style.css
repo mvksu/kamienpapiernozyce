@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+html {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#474749), to(#1f1e1e));
+  background-image: linear-gradient(180deg, #474749, #1f1e1e);
+  height: 100%;
+}
+
+header {
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-size: 25px;
+  margin-top: 40px;
+}
+
+header h1 {
+  margin-bottom: 25px;
+}
+
+header span {
+  color: gold;
+}
+
+.gameControl {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  color: white;
+  padding: 5px;
+  padding-left: 30px;
+}
+
+.gameControl div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gameControl .switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  margin: 10px;
+}
+
+.gameControl .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.gameControl .switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 0px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.gameControl .switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.gameControl .switch input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196F3;
+          box-shadow: 0 0 1px #2196F3;
+}
+
+.gameControl .switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.gameControl .switch input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196F3;
+          box-shadow: 0 0 1px #2196F3;
+}
+
+.gameControl .switch input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+.gameControl .switch .slider.round {
+  border-radius: 34px;
+}
+
+.gameControl .switch .slider.round:before {
+  border-radius: 50%;
+}
+
+.gameControl .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.gameControl #resetButton {
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  padding: 8px 15px;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  text-transform: uppercase;
+}
+
+.score-box {
+  border: 3px solid white;
+  width: 250px;
+  margin: 20px auto;
+  color: white;
+  font-size: 45px;
+  text-align: center;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.score-box .badge {
+  background-color: gold;
+  color: black;
+  font-weight: 900;
+  font-size: 24px;
+  padding: 2px 10px;
+}
+
+.score-box #user-label {
+  position: absolute;
+  top: 25px;
+  left: -25px;
+}
+
+.score-box #ai-label {
+  position: absolute;
+  top: 25px;
+  right: -25px;
+}
+
+.roundstable {
+  width: 20%;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: auto;
+}
+
+.roundstable div:first-child {
+  margin-bottom: 25px;
+  width: 100%;
+  border: none;
+}
+
+.roundstable div {
+  width: 33%;
+  border: 1px solid #555555;
+  border-collapse: collapse;
+  padding: 3px;
+}
+
+.images {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.images img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: 30%;
+}
+
+.images img:first-child {
+  float: right;
+}
+
+.result {
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
+
+.option-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 50px auto;
+}
+
+.option-box .option {
+  padding: 15px;
+  color: white;
+  border: 1px solid white;
+  margin: 0 15px;
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+}
+
+.option-box .option:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(100%);
+          filter: brightness(100%);
+}
+
+#action-message {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.green-glow {
+  border: 4px solid lightgreen;
+  -webkit-box-shadow: 0 0 10px #31b43a;
+          box-shadow: 0 0 10px #31b43a;
+}
+
+.red-glow {
+  border: 4px solid #fc121b;
+  -webkit-box-shadow: 0 0 10px #d01115;
+          box-shadow: 0 0 10px #d01115;
+}
+
+.gray-glow {
+  border: 4px solid #464647;
+  -webkit-box-shadow: 0 0 10px #507b91;
+          box-shadow: 0 0 10px #507b91;
+}
+
+.bounce {
+  -webkit-animation: bounce 1s linear;
+          animation: bounce 1s linear;
+}
+
+@-webkit-keyframes bounce {
+  20%, 50%, 80%, to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+  70% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+  90% {
+    -webkit-transform: translateY(-4px);
+            transform: translateY(-4px);
+  }
+}
+
+@keyframes bounce {
+  20%, 50%, 80%, to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+  70% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+  90% {
+    -webkit-transform: translateY(-4px);
+            transform: translateY(-4px);
+  }
+}
+/*# sourceMappingURL=style.css.map */
