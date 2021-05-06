@@ -105,7 +105,7 @@ function draw(userChoice, AIchoice) {
 function game(userChoice) { 
     const AIchoice = getAIchoice();
     setTimeout(() => {
-        document.getElementById("right").src = `${AIchoice}r.PMG`
+        document.getElementById("right").src = `${AIchoice}r.PNG`
         document.getElementById("left").src = `${userChoice}.PNG`
     }, 1000)
         
