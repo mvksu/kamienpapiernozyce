@@ -1,4 +1,5 @@
 var userScore = 0;
+var roundnumber = 0;
 var AIScore = 0;
 var moves = []; 
 var modeLog;
@@ -31,8 +32,6 @@ var psp = 0;
 var srp = 0;
 var spp = 0;
 var ssp = 0;
-
-
 
 const userScore_span = document.getElementById("user-score");
 const aiScore_span = document.getElementById("ai-score");
@@ -67,34 +66,72 @@ function convertToInt(letter) {
     if (letter == 's') return previousMoveInt = 2;
 }
 
-
 function convertToLetter(letter) {
     if (letter == 'r') return 'Kamień'
     if (letter == 'p') return 'Papier'
     if (letter == 's') return 'Nożyce'
 }
-function win(userChoice, AIchoice) {
+
+function showResults() {
+    document.getElementById("player1").innerHTML = convertToLetter(moves[arraySize].userMove);
+    document.getElementById("ai1").innerHTML = convertToLetter(moves[arraySize].AImove);
+    document.getElementById("round1").innerHTML = roundnumber;
+    if (moves[arraySize].winner == "user") {
+        document.getElementById("player1").style.color = 'green'
+        document.getElementById("ai1").style.color = 'white'
+    }
+    else {
+        document.getElementById("ai1").style.color = '#fc121b'
+        document.getElementById("player1").style.color = 'white'
+    }
+    if (roundnumber-1 > 0) {
+        document.getElementById("round2").innerHTML = roundnumber-1;
+    }
+
+    document.getElementById("player2").innerHTML = convertToLetter(moves[arraySize-1].userMove);
+    document.getElementById("ai2").innerHTML = convertToLetter(moves[arraySize-1].AImove);
+    if (moves[arraySize-1].winner == "user") {
+        document.getElementById("player2").style.color = 'green'
+        document.getElementById("ai2").style.color = 'white'
+    }
+    else {
+        document.getElementById("ai2").style.color = '#fc121b'
+        document.getElementById("player2").style.color = 'white'
+    }
+    if (roundnumber-2 > 0) {
+        document.getElementById("round3").innerHTML = roundnumber-2;
+    }
+
+    document.getElementById("player3").innerHTML = convertToLetter(moves[arraySize-2].userMove);
+    document.getElementById("ai3").innerHTML = convertToLetter(moves[arraySize-2].AImove);
+
+    if (moves[arraySize-2].winner == "user") {
+        document.getElementById("player3").style.color = 'green'
+        document.getElementById("ai3").style.color = 'white'
+    }
+    else {
+        document.getElementById("ai3").style.color = '#fc121b'
+        document.getElementById("player3").style.color = 'white'
+    }
+}
+function win(userChoice) {
     userScore++;
     userScore_span.innerHTML = userScore;
-    const smallUserWorld = "ty".fontsize(5).sub().fontcolor('lightgreen');
-    const smallAIWorld = "AI".fontsize(3).sub().fontcolor('red');
     document.getElementById(userChoice).classList.add('green-glow')
     setTimeout(() => {
         document.getElementById(userChoice).classList.remove('green-glow')
     }, 500);
 }
 
-function lose(userChoice, AIchoice) {
+function lose(userChoice) {
     AIScore++;
     aiScore_span.innerHTML = AIScore;
-    const smallUserWorld = "ty".fontsize(5).sub().fontcolor('red');
-    const smallAIWorld = "AI".fontsize(3).sub().fontcolor('lightgreen');
     document.getElementById(userChoice).classList.add('red-glow')
     setTimeout(() => {
         document.getElementById(userChoice).classList.remove('red-glow')
     }, 500);
 }
-function draw(userChoice, AIchoice) {
+function draw(userChoice) {
     
     document.getElementById(userChoice).classList.add('gray-glow')
     setTimeout(() => {
@@ -103,11 +140,13 @@ function draw(userChoice, AIchoice) {
 }
 
 function game(userChoice) { 
+    roundnumber++;
+    document.getElementById("roundnumber").innerHTML = roundnumber;
     const AIchoice = getAIchoice();
     setTimeout(() => {
         document.getElementById("right").src = `${AIchoice}r.PNG`
         document.getElementById("left").src = `${userChoice}.PNG`
-    }, 1000)
+    }, 650)
         
     switch (userChoice + AIchoice) {
         case "rs":
@@ -132,11 +171,17 @@ function game(userChoice) {
             result = 'draw';
             break; 
     }
+
+
     moves.push(setMove);
     if (moves.length > 5) {
         moves.shift();
     }
     arraySize = moves.length - 1;
+
+    showResults();
+
+
 
 
     console.log("Player move:  " + userChoice);
@@ -156,12 +201,19 @@ function game(userChoice) {
 
 
 
-
 function main() {
-
+    document.getElementById("resetButton").addEventListener('click', function() {
+        userScore = 0;
+        roundnumber = 1;
+        AIScore = 0;
+        userScore_span.innerHTML = userScore;
+        document.getElementById("roundnumber").innerHTML = roundnumber;
+        aiScore_span.innerHTML = userScore;
+    })
+    
     rock_div.addEventListener('click', function() {
-        document.getElementById("right").style.animation = "bounce 1s"
-        document.getElementById("left").style.animation = "bounce 1s"
+        document.getElementById("right").style.animation = "bounce 0.75s"
+        document.getElementById("left").style.animation = "bounce 0.75s"
         setTimeout(() => {
             document.getElementById("right").style.animation = "none"
             document.getElementById("left").style.animation = "none"
@@ -171,8 +223,8 @@ function main() {
         game("r")
     })
     paper_div.addEventListener('click', function() {
-        document.getElementById("right").style.animation = "bounce 1s"
-        document.getElementById("left").style.animation = "bounce 1s"
+        document.getElementById("right").style.animation = "bounce 0.75s"
+        document.getElementById("left").style.animation = "bounce 0.75s"
         setTimeout(() => {
             document.getElementById("right").style.animation = "none"
             document.getElementById("left").style.animation = "none"
@@ -181,8 +233,8 @@ function main() {
         game("p")
     })
     scissors_div.addEventListener('click', function() {
-        document.getElementById("right").style.animation = "bounce 1s"
-        document.getElementById("left").style.animation = "bounce 1s"
+        document.getElementById("right").style.animation = "bounce 0.75s"
+        document.getElementById("left").style.animation = "bounce 0.75s"
         setTimeout(() => {
             document.getElementById("right").style.animation = "none"
             document.getElementById("left").style.animation = "none"
@@ -190,6 +242,8 @@ function main() {
         userMove = 's'
         game("s")
     })
+    
+
 }
 main();
 

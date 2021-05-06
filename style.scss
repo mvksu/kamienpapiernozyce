@@ -110,6 +110,11 @@ header {
     color: white;
     border: 1px solid white;
     text-transform: uppercase;
+    
+  }
+  #resetButton:hover {
+    cursor: pointer;
+    filter: brightness(80%);
   }
 }
 
