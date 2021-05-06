@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+    font-family: 'Ubuntu', sans-serif;
+}
+html {
+  background-image: linear-gradient(180deg, #474749, #1f1e1e);
+  height: 100%;
+}
+
+
+header {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-top: 40px;
+    h1 {
+      margin-bottom: 25px;
+    }
+    span {
+      color: gold;
+    }
+    
+}
+.gameControl {
+  position: absolute;
+  display: flex;
+  top: 0;
+  color: white;
+  padding: 5px;
+  padding-left: 30px;
+  div {
+    display: flex;
+    align-items: center;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+    margin: 10px;
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 13px;
+      width: 13px;
+      left: 0px;
+      bottom: 2px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(13px);
+      -ms-transform: translateX(13px);
+      transform: translateX(13px);
+    }
+    
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    
+  }
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  #resetButton {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    padding: 8px 15px;
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    text-transform: uppercase;
+  }
+}
+
+
+.score-box {
+    border: 3px solid white;
+    width: 250px;
+    margin: 20px auto;
+    color: white;
+    font-size: 45px;
+    text-align: center;
+    padding: 15px 20px;
+    position: relative;
+    .badge {
+        background-color: gold;
+        color: black;
+        font-weight: 900;
+        font-size: 24px;
+        padding: 2px 10px;
+    }
+    #user-label {
+        position: absolute;
+        top: 25px;
+        left: -25px
+    }
+    #ai-label {
+        position: absolute;
+        top: 25px;
+        right: -25px
+    }
+}
+.roundstable {
+  width: 20%;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  div:first-child {
+    margin-bottom: 25px;
+    width: 100%;
+    border: none;
+  }
+  div {
+    width: 33%;
+    border: 1px solid rgb(85, 85, 85);
+    border-collapse: collapse;
+    padding: 3px;
+  }
+}
+.images {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 30%;
+    }
+    img:first-child {
+      float: right;
+    }
+}
+.result {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+.option-box {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin: 50px auto;
+    .option {
+        padding: 15px;
+        color: white;
+        border: 1px solid white;
+        margin: 0 15px;
+        filter: brightness(60%);
+    }
+    .option:hover {
+        cursor: pointer;
+        filter: brightness(100%);
+    }
+}
+#action-message {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.green-glow {
+    border: 4px solid lightgreen;
+    box-shadow:  0 0 10px #31b43a;
+}
+.red-glow {
+    border: 4px solid #fc121b;
+    box-shadow:  0 0 10px #d01115;
+}
+.gray-glow {
+    border: 4px solid #464647;
+    box-shadow:  0 0 10px #507b91;
+}
+.bounce {
+  animation: bounce 1s linear;
+}
+
+@keyframes bounce {
+  20%, 50%, 80%, to {
+    transform: translateY(0);
+  }
+  40%{
+    transform: translateY(-30px);
+  }
+  70%{
+    transform: translateY(-15px);
+  }
+  90%{
+    transform: translateY(-4px);
+  }
+}
+
+
