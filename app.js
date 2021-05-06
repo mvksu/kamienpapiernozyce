@@ -105,11 +105,10 @@ function draw(userChoice, AIchoice) {
 function game(userChoice) { 
     const AIchoice = getAIchoice();
     setTimeout(() => {
-        document.getElementById("right").src = `${AIchoice}r.png`
-        document.getElementById("left").src = `${userChoice}.png`
+        document.getElementById("right").src = `${AIchoice}r.PMG`
+        document.getElementById("left").src = `${userChoice}.PNG`
     }, 1000)
-        document.getElementById("right").src = `rr.png`
-        document.getElementById("left").src = `r.png`
+        
     switch (userChoice + AIchoice) {
         case "rs":
         case "pr":
